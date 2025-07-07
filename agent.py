@@ -25,9 +25,8 @@ text_splitter = RecursiveCharacterTextSplitter(
 split_docs = text_splitter.split_documents(documents)
 
 embeddings = OpenAIEmbeddings(
-    model="provider-3/text-embedding-3-small",
-    base_url = "https://api.a4f.co/v1",
-    api_key="ddc-a4f-ed13d613bd6c40089fd8a942d2f5a79f"
+    model="text-embedding-3-small",
+    api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 )
 
 vectorstore = Chroma.from_documents(documents=split_docs, embedding=embeddings, collection_name="analysis")
@@ -38,9 +37,8 @@ retreiver = vectorstore.as_retriever(
 )
 
 openai = ChatOpenAI(
-    model_name="provider-6/gpt-4.1",
-    base_url = "https://api.a4f.co/v1",
-    api_key="ddc-a4f-ed13d613bd6c40089fd8a942d2f5a79f")
+    model_name="gpt-4.1",
+    api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 # State of the graph
 class AgentState(TypedDict):
